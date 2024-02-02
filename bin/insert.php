@@ -1,22 +1,15 @@
-<?PHP
+<?php
+
 if (session_id() == "") session_start();
 $sessionID = session_id();
-
-$text = addslashes($_GET[text]);
-
-$link = mysql_connect("HOST", "USER", "PASSWORD");
-mysql_select_db("DB");
-
-
-$queryUserID = "SELECT id FROM talk_users WHERE sessionID = '$sessionID'";
-$resultsUserID = mysql_query($queryUserID);
-$num = mysql_numrows($resultsUserID);
-$line = mysql_fetch_assoc($resultsUserID);
+$text = addslashes($_GET['text']);
+$link = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DBNAME");
+$resultsUserID = mysqli_query($link, "SELECT id FROM talk_users WHERE sessionID = '$sessionID'");
+$num = mysqli_num_rows($resultsUserID);
+$line = mysqli_fetch_assoc($resultsUserID);
 $id = $line["id"];
 
-
 if ($num > 0) {
-    $query = "INSERT INTO talk_history (user, text) VALUES ('$id','$text')";
-    $results = mysql_query($query);
+    $results = mysqli_query($link, "INSERT INTO talk_history (user, text) VALUES ($id,'$text')");
 }
-mysql_close($link);
+mysqli_close($link);

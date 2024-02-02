@@ -6,6 +6,14 @@ Comet is a Flash-based chat application. It is a stand-alone application and doe
 - Easy to setup
 - Secure login
 
+![Login Window](/assets/screenshot1.png)
+
+*Login Window*
+
+![Message Window](/assets/screenshot2.png)
+
+*Message Window*
+
 # ToDo
 ## Users
   - Contact List

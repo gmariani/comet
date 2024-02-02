@@ -1,11 +1,6 @@
-<?PHP
-$link = mysql_connect("HOST", "USER", "PASSWORD");
-mysql_select_db("DB");
-
-$query = "TRUNCATE TABLE `talk_history`";
-$results = mysql_query($query);
-
-$query2 = "INSERT INTO talk_history (user, text) VALUES (1,'Welcome!')";
-$results2 = mysql_query($query2);
-
-mysql_close($link);
+<?php
+$link = mysqli_connect("localhost", "USERNAME", "PASSWORD", "DBNAME");
+$results = mysqli_query($link, "TRUNCATE TABLE `talk_history`");
+$results2 = mysqli_query($link, "INSERT INTO talk_history (user, text) VALUES (1,'Welcome!')");
+mysqli_close($link);
+echo 'Chat cleared';
